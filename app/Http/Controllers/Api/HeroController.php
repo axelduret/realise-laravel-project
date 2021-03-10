@@ -15,7 +15,8 @@ class HeroController extends Controller
    */
   public function index()
   {
-    return Hero::all();
+    $heroes = Hero::with('weapons', 'skills')->get();
+    return $heroes;
   }
   /**
    * Store a newly created resource in storage.
