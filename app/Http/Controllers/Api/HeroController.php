@@ -15,6 +15,7 @@ class HeroController extends Controller
    */
   public function index()
   {
+    // return Skill::all();
     $heroes = Hero::with('weapons', 'skills')->get();
     return $heroes;
   }

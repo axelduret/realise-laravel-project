@@ -15,7 +15,9 @@ class SkillController extends Controller
    */
   public function index()
   {
-    return Skill::all();
+    // return Skill::all();
+    $skills = Skill::with('heroes')->get();
+    return $skills;
   }
   /**
    * Store a newly created resource in storage.
