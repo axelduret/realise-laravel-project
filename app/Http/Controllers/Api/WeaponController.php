@@ -15,7 +15,9 @@ class WeaponController extends Controller
    */
   public function index()
   {
-    return Weapon::all();
+    // return Weapon::all();
+    $weapons = Weapon::with('hero')->get();
+    return $weapons;
   }
   /**
    * Store a newly created resource in storage.
