@@ -16,8 +16,7 @@ class SkillController extends Controller
   public function index()
   {
     // return Skill::all();
-    $skills = Skill::with('heroes')->get();
-    return $skills;
+    return Skill::with('heroes')->with('heroes.weapons')->get();
   }
   /**
    * Store a newly created resource in storage.
@@ -35,9 +34,9 @@ class SkillController extends Controller
    * @param  \App\Skill $skill
    * @return \Illuminate\Http\Response
    */
-  public function show(Skill $skill)
+  public function show($skill)
   {
-    return $skill;
+    return Skill::with('heroes')->with('heroes.weapons')->find($skill);
   }
   /**
    * Update the specified resource in storage.

@@ -16,8 +16,7 @@ class WeaponController extends Controller
   public function index()
   {
     // return Weapon::all();
-    $weapons = Weapon::with('hero')->get();
-    return $weapons;
+    return Weapon::with('hero')->with('hero.skills')->get();
   }
   /**
    * Store a newly created resource in storage.
@@ -35,9 +34,9 @@ class WeaponController extends Controller
    * @param  \App\Weapon $weapon
    * @return \Illuminate\Http\Response
    */
-  public function show(Weapon $weapon)
+  public function show($weapon)
   {
-    return $weapon;
+    return Weapon::with('hero')->with('hero.skills')->find($weapon);
   }
   /**
    * Update the specified resource in storage.

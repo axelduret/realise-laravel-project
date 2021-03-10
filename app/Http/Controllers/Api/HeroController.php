@@ -16,8 +16,7 @@ class HeroController extends Controller
   public function index()
   {
     // return Skill::all();
-    $heroes = Hero::with('weapons', 'skills')->get();
-    return $heroes;
+    return Hero::with('weapons')->with('skills')->get();
   }
   /**
    * Store a newly created resource in storage.
@@ -35,9 +34,9 @@ class HeroController extends Controller
    * @param  \App\Hero $hero
    * @return \Illuminate\Http\Response
    */
-  public function show(Hero $hero)
+  public function show($hero)
   {
-    return $hero;
+    return Hero::with('weapons')->with('skills')->find($hero);
   }
   /**
    * Update the specified resource in storage.
